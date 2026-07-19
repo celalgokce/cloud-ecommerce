@@ -1,0 +1,6 @@
+<%- include('header') %>
+<div class="page container"><h1 class="page-title">Siparişler</h1>
+<% if(orders.length===0) { %><div style="text-align:center;padding:60px;background:white;border-radius:16px"><p style="color:#6b7280">Henüz sipariş yok.</p></div>
+<% } else { %><% orders.forEach(o => { %><div class="order-card"><div><span class="order-id">#<%= o.order_id %></span><span style="margin-left:12px;font-size:14px"><%= o.customer_name %></span><span style="margin-left:12px;font-size:13px;color:#6b7280"><%= new Date(o.created_at).toLocaleDateString('tr-TR') %></span></div><div style="display:flex;gap:12px;align-items:center"><span style="font-weight:600">₺<%= Number(o.total_amount).toLocaleString('tr-TR') %></span><span style="font-size:13px;color:#6b7280"><%= o.item_count %> ürün</span><span class="status status-<%= o.status %>"><%= o.status %></span></div></div><% }) %><% } %>
+</div>
+<%- include('footer') %>

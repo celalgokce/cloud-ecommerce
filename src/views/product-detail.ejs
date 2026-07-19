@@ -1,0 +1,14 @@
+<%- include('header') %>
+<div class="page container">
+<div class="detail-grid">
+<div class="detail-img <%= product.color_class %>"><span><%= product.emoji %></span></div>
+<div class="detail-info">
+<div class="category"><%= product.category %></div>
+<h1><%= product.product_name %></h1>
+<p class="description"><%= product.description %></p>
+<div class="price-tag">₺<%= Number(product.price).toLocaleString('tr-TR') %></div>
+<div class="stock-info"><span class="stock-dot" style="background:<%= product.stock > 0 ? '#10b981' : '#ef4444' %>"></span><%= product.stock > 0 ? product.stock + ' adet stokta' : 'Stokta yok' %></div>
+<form method="POST" action="/cart/add"><input type="hidden" name="product_id" value="<%= product.product_id %>"><input type="hidden" name="product_name" value="<%= product.product_name %>"><input type="hidden" name="price" value="<%= product.price %>"><div style="display:flex;gap:12px;align-items:center"><input type="number" name="quantity" value="1" min="1" max="<%= product.stock %>" style="width:80px;padding:10px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:15px;text-align:center"><button type="submit" class="btn btn-primary" style="padding:12px 28px;font-size:15px" <%= product.stock<=0?'disabled':'' %>>🛒 Sepete Ekle</button></div></form>
+<a href="/products" style="display:inline-flex;align-items:center;gap:6px;margin-top:20px;color:var(--gray);text-decoration:none;font-size:14px;font-weight:500">← Ürünlere dön</a>
+</div></div></div>
+<%- include('footer') %>

@@ -1,0 +1,16 @@
+<!DOCTYPE html><html lang="tr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Kayıt Ol | CloudShop</title><link rel="stylesheet" href="/css/style.css"></head><body>
+<div class="login-page">
+<div class="login-card">
+<div class="logo">Cloud<span>Shop</span></div>
+<div class="subtitle">Yeni hesap oluşturun</div>
+<% if(error) { %><div style="background:#fee2e2;color:#dc2626;padding:10px 14px;border-radius:10px;font-size:13px;margin-bottom:16px;text-align:center"><%= error %></div><% } %>
+<form method="POST" action="/register">
+<div class="fg"><label>Ad Soyad</label><input name="full_name" placeholder="Celal Gökce" required></div>
+<div class="fg"><label>E-posta</label><input name="email" type="email" placeholder="ornek@email.com" required></div>
+<div class="fg"><label>Şifre</label><input name="password" type="password" placeholder="En az 6 karakter" required minlength="6"></div>
+<button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;padding:12px;font-size:15px;margin-top:4px">Kayıt Ol →</button>
+</form>
+<div class="login-footer">Zaten hesabınız var mı? <a href="/login">Giriş yapın</a></div>
+</div>
+</div>
+</body></html>

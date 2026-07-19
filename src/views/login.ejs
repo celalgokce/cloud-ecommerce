@@ -1,0 +1,17 @@
+<!DOCTYPE html><html lang="tr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Giriş Yap | CloudShop</title><link rel="stylesheet" href="/css/style.css"></head><body>
+<div class="login-page">
+<div class="login-card">
+<div class="logo">Cloud<span>Shop</span></div>
+<div class="subtitle">Hesabınıza giriş yapın</div>
+<% if(error) { %><div style="background:#fee2e2;color:#dc2626;padding:10px 14px;border-radius:10px;font-size:13px;margin-bottom:16px;text-align:center"><%= error %></div><% } %>
+<form method="POST" action="/login">
+<div class="fg"><label>E-posta</label><input name="email" type="email" placeholder="ornek@email.com" value="demo@cloudshop.com" required></div>
+<div class="fg"><label>Şifre</label><input name="password" type="password" placeholder="••••••" value="demo123" required></div>
+<button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;padding:12px;font-size:15px;margin-top:4px">Giriş Yap →</button>
+</form>
+<div class="divider">veya</div>
+<a href="/register" class="btn btn-outline" style="width:100%;justify-content:center">Yeni Hesap Oluştur</a>
+<div class="login-footer">Demo: demo@cloudshop.com / demo123</div>
+</div>
+</div>
+</body></html>

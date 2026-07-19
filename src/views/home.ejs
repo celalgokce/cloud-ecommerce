@@ -1,0 +1,8 @@
+<%- include('header') %>
+<div class="hero"><div class="container"><div class="hero-badge">☁️ GCP Cloud Run Üzerinde Çalışıyor</div><h1>Teknoloji Mağazası</h1><p>Bulut tabanlı, otomatik ölçeklenebilir e-ticaret platformu</p><div class="hero-actions"><a href="/products" class="btn-hero btn-hero-primary">🛍️ Alışverişe Başla</a><a href="#featured" class="btn-hero btn-hero-outline">Öne Çıkanlar ↓</a></div></div></div>
+<div class="container">
+<div class="stats-row"><div class="stat-card"><div class="num"><%= stats.product_count || 0 %></div><div class="label">Ürün</div></div><div class="stat-card"><div class="num"><%= stats.order_count || 0 %></div><div class="label">Sipariş</div></div><div class="stat-card"><div class="num"><%= stats.customer_count || 0 %></div><div class="label">Müşteri</div></div></div>
+<div id="featured" class="section-title">⭐ Öne Çıkan Ürünler</div>
+<div class="product-grid"><% featured.forEach(p => { %><div class="product-card"><div class="product-img <%= p.color_class %>"><span><%= p.emoji %></span><div class="stock-badge">Stokta</div></div><div class="info"><div class="category"><%= p.category %></div><div class="name"><%= p.product_name %></div><div class="desc"><%= p.description %></div><div class="bottom"><div class="price">₺<%= Number(p.price).toLocaleString('tr-TR') %></div><a href="/products/<%= p.product_id %>" class="btn btn-primary btn-sm">İncele →</a></div></div></div><% }) %></div>
+</div>
+<%- include('footer') %>

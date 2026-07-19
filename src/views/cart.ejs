@@ -1,0 +1,9 @@
+<%- include('header') %>
+<div class="page container"><h1 class="page-title">🛒 Alışveriş Sepeti</h1>
+<% if(cart.length===0) { %><div class="empty-state"><div class="icon">🛒</div><p>Sepetiniz henüz boş</p><a href="/products" class="btn btn-primary">🛍️ Alışverişe Başla</a></div>
+<% } else { %>
+<table class="cart-table"><thead><tr><th>Ürün</th><th>Birim Fiyat</th><th>Adet</th><th>Toplam</th><th></th></tr></thead><tbody><% cart.forEach(item => { %><tr><td><strong><%= item.product_name %></strong></td><td>₺<%= Number(item.price).toLocaleString('tr-TR') %></td><td><%= item.quantity %></td><td><strong>₺<%= (item.price*item.quantity).toLocaleString('tr-TR') %></strong></td><td><form method="POST" action="/cart/remove"><input type="hidden" name="product_id" value="<%= item.product_id %>"><button type="submit" class="btn btn-danger btn-sm">✕ Kaldır</button></form></td></tr><% }) %></tbody></table>
+<div class="cart-total">Genel Toplam: ₺<%= total.toLocaleString('tr-TR') %></div>
+<div class="checkout-form"><h3>📦 Teslimat Bilgileri</h3><form method="POST" action="/checkout"><div class="fg"><label>Ad Soyad</label><input name="customer_name" placeholder="Celal Gökce" value="<%= user ? user.full_name : '' %>" required></div><div class="fg"><label>E-posta</label><input name="customer_email" type="email" placeholder="ornek@email.com" value="<%= user ? user.email : '' %>" required></div><div class="fg"><label>Teslimat Adresi</label><textarea name="address" rows="3" placeholder="Ankara, Çankaya..." required></textarea></div><button type="submit" class="btn btn-success" style="width:100%;justify-content:center;padding:14px;font-size:15px">✓ Siparişi Tamamla (₺<%= total.toLocaleString('tr-TR') %>)</button></form></div>
+<% } %></div>
+<%- include('footer') %>

@@ -1,0 +1,10 @@
+<%- include('../header') %>
+<div class="page container">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px"><h1 class="page-title" style="margin:0">👥 Kullanıcılar</h1><a href="/admin" class="btn btn-outline btn-sm">← Dashboard</a></div>
+<table class="cart-table"><thead><tr><th>ID</th><th>Ad Soyad</th><th>E-posta</th><th>Rol</th><th>Kayıt Tarihi</th></tr></thead><tbody>
+<% users.forEach(u => { %>
+<tr><td>#<%= u.user_id %></td><td><strong><%= u.full_name %></strong></td><td><%= u.email %></td><td><span class="status <%= u.role==='admin'?'status-completed':'status-pending' %>"><%= u.role %></span></td><td style="font-size:12px"><%= new Date(u.created_at).toLocaleDateString('tr-TR') %></td></tr>
+<% }); %>
+</tbody></table>
+</div>
+<%- include('../footer') %>
